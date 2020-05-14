@@ -15,7 +15,7 @@ public:
 template <typename T>
 class AVLTree {
 public:
-	
+
 	Node<T>* root;
 	bool nodeNull(Node<T>* &node);
 public:
@@ -30,7 +30,7 @@ public:
 	size_t getTreeHeight(Node<T> *node = nullptr);//done
 	T getMin(Node<T> *node = nullptr);//done
 	T getMax(Node<T> *node = nullptr);//done
-	//bool isBalanced(Node<T>** node = nullptr);
+									  //bool isBalanced(Node<T>** node = nullptr);
 	bool isBalanced(Node<T>*& node);
 	void balance();
 	std::string ToGraphviz(Node<T>* root);
@@ -46,7 +46,7 @@ private:
 	Node<T>* LRRotation(Node<T> *node);
 	Node<T>* RLRotation(Node<T> *node);
 	//void ToGraphvizHelper(std::string& listOfNodes, std::string& listOfConnections, Node* toWorkWith, size_t& uniqueID);
-	
+
 };
 
 template<typename T>
@@ -94,7 +94,7 @@ inline void AVLTree<T>::insert(T element, Node<T> * node)
 				node->nodeHigher = new Node<T>(element);
 			}
 		}
-		else if(element < node->data){
+		else if (element < node->data) {
 			if (node->nodeLower != nullptr) {
 				insert(element, node->nodeLower);
 			}
@@ -230,7 +230,7 @@ inline void AVLTree<T>::writeTree2(Node<T>* node, int space)//taken from https:/
 	std::cout << node->data << std::endl;
 
 	writeTree2(node->nodeLower, space);
-	
+
 }
 
 template<typename T>
@@ -420,7 +420,6 @@ toReturn += std::string("}");
 }
 return std::move(toReturn);
 }
-
 template<typename T>
 void AVLTree<T>::ToGraphvizHelper(std::string& listOfNodes, std::string& listOfConnections, Node* toWorkWith, size_t& uniqueID) // Member function of the AVLTree class
 {
@@ -436,7 +435,6 @@ else
 listOfNodes += std::string("\t") + std::to_string(++uniqueID) + std::string(" [label=") + std::string("nill, style = invis];\n");
 listOfConnections += std::string("\t") + std::to_string(myID) + std::string(" -> ") + std::to_string(uniqueID) + std::string(" [ style = invis];\n");
 }
-
 if(toWorkWith->nodeHigher)
 {
 listOfConnections += std::string("\t") + std::to_string(myID) + std::string(" -> ") + std::to_string(uniqueID + 1) + std::string(" [color=red];\n");
